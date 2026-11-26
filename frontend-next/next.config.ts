@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const backendURL =
-  process.env.BACKEND_URL || "http://127.0.0.1:8000";
+  process.env.BACKEND_URL ||
+  "https://documind-backend-88vf.onrender.com";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
