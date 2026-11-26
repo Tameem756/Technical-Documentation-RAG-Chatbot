@@ -1,0 +1,41 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Next.js
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+
+# Database
+chroma_db/
+*.sqlite3
+
+# Private documents
+uploads/
+documents/
+*.pdf
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
