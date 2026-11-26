@@ -1,9 +1,5 @@
 import type { NextConfig } from "next";
 
-const backendURL =
-  process.env.BACKEND_URL ||
-  "https://documind-backend-88vf.onrender.com";
-
 const nextConfig: NextConfig = {
   devIndicators: false,
 
@@ -11,7 +7,8 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: `${backendURL}/:path*`,
+        destination:
+          "https://documind-backend-88vf.onrender.com/:path*",
       },
     ];
   },
