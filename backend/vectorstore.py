@@ -1,20 +1,38 @@
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
+from langchain_core.embeddings import Embeddings
 
 from embeddings import get_embedding_model
+from config import CHROMA_DB_DIR
 
-DB_PATH = "../chroma_db"
+DB_PATH = CHROMA_DB_DIR
 
 
-class SentenceTransformerEmbeddings:
-    def __init__(self):
-        self.model = get_embedding_model()
+class SentenceTransformerEmbeddings(Embeddings):
 
     def embed_documents(self, texts):
-        return self.model.encode(texts).tolist()
+
+        model = get_embedding_model()
+
+        embeddings = model.embed(
+            texts,
+            batch_size=4
+        )
+
+        return [
+            embedding.tolist()
+            for embedding in embeddings
+        ]
 
     def embed_query(self, text):
-        return self.model.encode(text).tolist()
+
+        model = get_embedding_model()
+
+        embedding = next(
+            model.embed([text], batch_size=1)
+        )
+
+        return embedding.tolist()
 
 
 embedding_function = SentenceTransformerEmbeddings()
